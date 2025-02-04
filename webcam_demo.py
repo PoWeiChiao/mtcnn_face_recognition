@@ -57,8 +57,10 @@ def detect(cam=0, thres=0.9):
                     min_key = 'Undetected'
                 ts3 = time.time()
                 print('face recognition: {:.1f}'.format(ts3 - ts2))
-                
-                cv2.rectangle(img0, (x, y), (x2, y2), (0, 0, 255), 2)
+                if min_key == 'Undetected':
+                    cv2.rectangle(img0, (x, y), (x2, y2), (0, 0, 255), 2)
+                else:
+                    cv2.rectangle(img0, (x, y), (x2, y2), (0, 255, 0), 2)
                 cv2.putText(
                   img0, min_key, (x + 5, y + 10), 
                    cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 1)
